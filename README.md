@@ -6,12 +6,12 @@ Instead of tracking throughout your disk to see if there is a duplicate, you can
 
 ## But How do we do it?
 If we were to read the whole file and then compare it to the rest of the files recursively through the given directory it will take a very long time, then how do we do it
-The answer is hashing, with hashing can generate a given string of letters and numbers which act as the identity of a given file and if we find any other file with the same identity we gonna delete it.
+The answer is hashing, with hashing we can generate a given string of letters and numbers which acts as the identity of a given file and if we find any other file with the same identity we gonna delete it.
 
-There's a variety of hashing algorithms out there such as
+We would be using hashlib module in python for the said purpose. There's a variety of hashing algorithms out there such as:
 - md5
 - sha1
-- sha224, sha256, sha384 and sha512
+- sha224, sha256, sha384 and sha512 etc.
 
 Lets install this python library to remove the Duplicate file in the existing Working directory by <em>"pip install DPL_SB2"</em>
 
