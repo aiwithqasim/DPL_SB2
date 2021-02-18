@@ -1,7 +1,7 @@
 # Intro
 In many situations you may find yourself having duplicates files on your disk and but when it comes to tracking and checking them manually it can tedious.
 
-## Heres a solution
+## Here is a solution
 Instead of tracking throughout your disk to see if there is a duplicate, you can automate the process using coding, by writing a program to recursively track through the disk and remove all the found duplicates and that's what this article is about.
 
 ## But How do we do it?
