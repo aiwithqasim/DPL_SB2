@@ -38,7 +38,7 @@ class Duplython:
                 if not filehash in self.File_hashes:
                     if filehash:                       
                         self.File_hashes.append(filehash)
-                        print("Scanning.......")
+                        print("Scanning.......", os.getcwd())
                 else:
                     byte_saved = os.path.getsize(file); self.count_cleaned+=1
                     self.Total_bytes_saved+=byte_saved
@@ -54,10 +54,11 @@ class Duplython:
         print('Total Space saved : ', mb_saved, 'MB')
         print('-------------------------------------------------')
         print('\n\nThankyou for Using this product')
-        
+
     def main(self)->None:
         self.welcome();self.clean();self.cleaning_summary()
+    
+
         
-if __name__ == '__main__':
-    App = Duplython()
-    App.main()
+        
+        
