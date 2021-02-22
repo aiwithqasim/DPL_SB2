@@ -1,22 +1,22 @@
-import time
-import os
-from hashlib import sha256
+import time,timeit,os,sys  
+from hashlib import sha512
 
 class Duplython:
     def __init__(self):
         self.home_dir = os.getcwd(); self.File_hashes = []
         self.Cleaned_dirs = []; self.Total_bytes_saved = 0
-        self.block_size = 65536; self.count_cleaned = 0
+        self.block_size = 1024; self.count_cleaned = 0    #Setting Block size to 1kB
+
     def welcome(self)->None:
         print('******************************************************************')
-        print('****************        DUPLYTHON      ****************************')
-        print('********************************************************************\n\n')
-        print('----------------        WELCOME        ----------------------------')
-        time.sleep(3)
-        print('\nCleaning .................')
-        
+        print('****************        DUP-SB2        ***************************')
+        print('******************************************************************\n\n')
+        print('-------A New Way of Deleting Duplicate Files through Python-------')
+        time.sleep(5)
+        print('\n....Cleaning in Progress \n....Please Wait!')
+
     def generate_hash(self, Filename:str)->str:
-        Filehash = sha256()
+        Filehash = sha512()
         try:
             with open(Filename, 'rb') as File:
                 fileblock = File.read(self.block_size)
@@ -27,8 +27,9 @@ class Duplython:
             return Filehash
         except:
             return False
+
     def clean(self)->None:
-        all_dirs = [path[0] for path in os.walk('.')]
+        all_dirs = [path[0] for path in os.walk('.')]         
         for path in all_dirs:
             os.chdir(path)
             All_Files =[file for file in os.listdir() if os.path.isfile(file)]
@@ -37,20 +38,22 @@ class Duplython:
                 if not filehash in self.File_hashes:
                     if filehash:                       
                         self.File_hashes.append(filehash)
-                        #print(file)
+                        print("Scanning.......")
                 else:
                     byte_saved = os.path.getsize(file); self.count_cleaned+=1
                     self.Total_bytes_saved+=byte_saved
                     os.remove(file); filename = file.split('/')[-1]
-                    print(filename, '.. cleaned ')
+                    print(f'Found {filename}, ...........Removing')
             os.chdir(self.home_dir)
+
     def cleaning_summary(self)->None:
-        mb_saved = self.Total_bytes_saved/1048576
-        mb_saved = round(mb_saved, 2)
-        print('\n\n--------------FINISHED CLEANING ------------')
-        print('File cleaned  : ', self.count_cleaned)
+        mb_saved = self.Total_bytes_saved/1048576      #Converting Bytes Into Mega Bytes  
+        mb_saved = round(mb_saved, 2)                  #Rounding saved space to 2 decimal    
+        print('\n\n-----------------FINISHED CLEANING --------------')
+        print('****Files cleaned : ', self.count_cleaned)
         print('Total Space saved : ', mb_saved, 'MB')
-        print('-----------------------------------------------')
+        print('-------------------------------------------------')
+        print('\n\nThankyou for Using this product')
         
     def main(self)->None:
         self.welcome();self.clean();self.cleaning_summary()
