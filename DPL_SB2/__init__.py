@@ -57,8 +57,3 @@ class Duplython:
 
     def main(self)->None:
         self.welcome();self.clean();self.cleaning_summary()
-    
-
-        
-        
-        
